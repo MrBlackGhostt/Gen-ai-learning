@@ -9,7 +9,7 @@ api_key = os.getenv("GOOGLE_API_KEY")
 
 # Initialize the model
 
-genai.configure(api_key=os.getenv("AIzaSyCkh4QjwI7brkoZ9fQxcD18sVpv7XFELiM"))
+genai.configure(api_key=os.getenv(""))
 
 # Set up the model
 generation_config = {
