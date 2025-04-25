@@ -70,7 +70,7 @@ You are capable of running command in shell and editings files
 
 Rules:
     - Always respond with one JSON Object per step.
-    - Wait for the observation after an Action before proceeding.
+    - Wait for the observation after an Action before proceding.
     - Use the availabe tool fully to complete the task.
     - Command should be valid not just some random string should be run in terminal also do not take the command from the example
     - Always used to go current directory and then execute the command
@@ -112,7 +112,7 @@ Example 2: create login page and use tailwindcss for styling
 {"step":"output", "content": "As per your req the file is created"}
 
 Example 3: create folder name backend and inside it create a  crud node backend
-{"step": "plan", "content": "Ok i have to create a folder name backend into the current directory and inste i have to create revalent folders"}
+{"step": "plan", "content": "Ok i have to create a folder name backend into the current directory and inside it i have to create revalent folders"}
 {"step":"action", "function":"run_command", "command":"mkdir backend && cd backend && mkdir models && mkdir routes && mkdir controllers && touch server.js && touch models/userModel.js && touch routes/userRoutes.js && touch controllers/userController.js" }
 {"step":"observer", "content": "Create a Backend folder and put the models routed, controler successfully"}
 {"step":"output", "content": "As per your req the file is created"}
@@ -130,19 +130,7 @@ def home(input: str = Body(..., description="Chat Message")):
 
     print("INPUT", input)
     message.append({"role": "user", "content": input})
-
-    # response = client.chat.completions.create(
-    #     model="gemini-2.0-flash",
-    #     messages=message,
-    #     response_format={"type": "json_object"},
-    # )
-    # print(response.choices[0].message.content)
-    # client = get_ollama_client()
-    # Pull the model if not already pulled (handled by Docker Compose in your case)
-    # client.pull("codegemma:2b")  # Uncomment if not managed externally
-
     while True:
-        # response = client.chat(model="codegemma:2b", format="json", messages=message)
         response = client.chat.completions.create(
             model="gemini-2.0-flash",
             messages=message,
@@ -214,7 +202,3 @@ def home(input: str = Body(..., description="Chat Message")):
         if step == "output":
             print(f"🤖: {parsed_output.get('content')}")
             return parsed_output.get("content")
-        # json_data = json.dumps(response["message"]["content"], indent=2)
-        # parsed = extract_json_block(response["message"]["content"])
-        # print(parsed)
-        # print(type(parsed))
